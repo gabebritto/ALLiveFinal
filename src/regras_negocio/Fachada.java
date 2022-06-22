@@ -53,7 +53,10 @@ public class Fachada {
 		if (participante!=null)
 			throw new Exception("Não criou participante: " + nome + " ja cadastrado(a)");
 
-		//criar objeto Participante 
+		//criar objeto Participante
+		if (idade < 0){
+			throw new Exception("Não criou participante: " + "Idade "+idade+" invalida");
+		}
 		participante = new Participante (email, nome, idade);
 
 		//adicionar participante no repositório
@@ -73,6 +76,9 @@ public class Fachada {
 		convidado = (Convidado) repositorio.localizarParticipante(nome);
 		if (convidado!=null) {
 			throw new Exception("Não criou convidado: " + nome + " ja cadastrado(a)");
+		}
+		if (idade < 1){
+			throw new Exception("Não criou convidado: " + "Idade: " + idade + "inválida");
 		}
 		//criar objeto Convidado
 		convidado = new Convidado(email, nome, idade, empresa);
@@ -96,7 +102,9 @@ public class Fachada {
 		}
 		//gerar id no repositorio
 		int id = repositorio.gerarId();
-		
+		if (preco < 0){
+			throw new Exception("Evento não criado: " + preco + "Menor que zero");
+		}
 		//criar evento
 		evento =  new Evento(id,descricao, data, preco);
 		//adicionar evento no repositório
