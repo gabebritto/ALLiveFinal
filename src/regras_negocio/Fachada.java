@@ -9,8 +9,8 @@ import repositorio.Repositorio;
 
 /**********************************
  * Grupo de alunos: 
- * ?????
- * ????:
+ * Erick Fonseca
+ * Gabriel Britto
  **********************************/
 
 public class Fachada {
@@ -51,17 +51,17 @@ public class Fachada {
 		//localizar participante no repositorio, usando o nome 
 		participante = repositorio.localizarParticipante(nome);
 		if (participante!=null)
-			throw new Exception("Não criou participante: " + nome + " ja cadastrado(a)");
+			throw new Exception("Nï¿½o criou participante: " + nome + " ja cadastrado(a)");
 
 		//criar objeto Participante
 		if (idade < 0){
-			throw new Exception("Não criou participante: " + "Idade "+idade+" invalida");
+			throw new Exception("Nï¿½o criou participante: " + "Idade "+idade+" invalida");
 		}
 		participante = new Participante (email, nome, idade);
 
-		//adicionar participante no repositório
+		//adicionar participante no repositï¿½rio
 		repositorio.adicionar(participante);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 		//retornar objeto criado
 		return participante;	
@@ -75,16 +75,16 @@ public class Fachada {
 
 		convidado = (Convidado) repositorio.localizarParticipante(nome);
 		if (convidado!=null) {
-			throw new Exception("Não criou convidado: " + nome + " ja cadastrado(a)");
+			throw new Exception("Nï¿½o criou convidado: " + nome + " ja cadastrado(a)");
 		}
 		if (idade < 1){
-			throw new Exception("Não criou convidado: " + "Idade: " + idade + "inválida");
+			throw new Exception("Nï¿½o criou convidado: " + "Idade: " + idade + "invï¿½lida");
 		}
 		//criar objeto Convidado
 		convidado = new Convidado(email, nome, idade, empresa);
-		//adicionar convidado no repositório
+		//adicionar convidado no repositï¿½rio
 		repositorio.adicionar(convidado);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 		//retornar objeto criado
 		return convidado;
@@ -98,18 +98,18 @@ public class Fachada {
 		//localizar Evento no repositorio, usando a data 
 		evento = repositorio.localizarEvento(data);
 		if (evento != null) {
-			throw new Exception("Evento não criado: "+ data + "Já reservada");
+			throw new Exception("Evento nï¿½o criado: "+ data + "Jï¿½ reservada");
 		}
 		//gerar id no repositorio
 		int id = repositorio.gerarId();
 		if (preco < 0){
-			throw new Exception("Evento não criado: " + preco + "Menor que zero");
+			throw new Exception("Evento nï¿½o criado: " + preco + "Menor que zero");
 		}
 		//criar evento
 		evento =  new Evento(id,descricao, data, preco);
-		//adicionar evento no repositório
+		//adicionar evento no repositï¿½rio
 		repositorio.adicionar(evento);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 		//retornar objeto criado
 		return evento;
@@ -121,25 +121,25 @@ public class Fachada {
 		//localizar participante no repositorio, usando o nome 
 		Participante p = repositorio.localizarParticipante(nome);
 		if(p == null) 
-			throw new Exception("Não adicionou participante:  " + nome + " inexistente");
+			throw new Exception("Nï¿½o adicionou participante:  " + nome + " inexistente");
 
 
 		//localizar evento no repositorio, usando id 
 		Evento ev = repositorio.localizarEvento(id);
 		if(ev == null) 
-			throw new Exception("Não adicionou participante: evento " + id + " inexistente");
+			throw new Exception("Nï¿½o adicionou participante: evento " + id + " inexistente");
 
 
 		//localizar o participante no evento, usando o nome
 		Participante paux = ev.localizar(nome);
 		if(paux != null) 
-			throw new Exception("Não adicionou participante: " + nome + " já participa do evento " + id);
+			throw new Exception("Nï¿½o adicionou participante: " + nome + " jï¿½ participa do evento " + id);
 
 		//adicionar o participante ao evento
 		ev.adicionar(p);
 		//adicionar o evento ao participante
 		p.adicionar(ev);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 	}
 
@@ -149,22 +149,22 @@ public class Fachada {
 		//localizar participante no repositorio, usando o nome 
 		Participante p = repositorio.localizarParticipante(nome);
 		if (p == null)
-			throw new Exception("Não removeu participante: "+ nome +"inexistente");
+			throw new Exception("Nï¿½o removeu participante: "+ nome +"inexistente");
 		//localizar evento no repositorio, usando id 
 		Evento ev = repositorio.localizarEvento(id);
 		if (ev == null){
-			throw new Exception("Não removeu participante: "+id+"inexistente");
+			throw new Exception("Nï¿½o removeu participante: "+id+"inexistente");
 		}
 		//localizar o participante no evento, usando o nome
 		Participante localizar = ev.localizar(p.getNome());
 		if (localizar != null){
-			throw new Exception("Não removeu participante: "+nome+"Não participa do evento.");
+			throw new Exception("Nï¿½o removeu participante: "+nome+"Nï¿½o participa do evento.");
 		}
 		//remover o participante do evento
 		ev.remover(p);
 		//remover o evento do participante
 		p.remover(ev);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 	}
 
@@ -172,7 +172,7 @@ public class Fachada {
 		//localizar evento no repositorio, usando id 
 		Evento ev = repositorio.localizarEvento(data);
 		if (ev == null)
-			throw new Exception("Não deletou evento: " + data + " inexistente");
+			throw new Exception("Nï¿½o deletou evento: " + data + " inexistente");
 
 		//Remover todos os participantes deste evento
 		for(Participante p : ev.getParticipantes()) {
@@ -180,9 +180,9 @@ public class Fachada {
 		}
 		ev.getParticipantes().clear();
 		
-		//remover evento do repositório
+		//remover evento do repositï¿½rio
 		repositorio.remover(ev);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 	}
 
@@ -190,15 +190,15 @@ public class Fachada {
 		//localizar evento no repositorio, usando data 
 		Evento ev = repositorio.localizarEvento(data);
 		if (ev == null){
-			throw new Exception("Não adiou evento: " + data + " inexistente");
+			throw new Exception("Nï¿½o adiou evento: " + data + " inexistente");
 		}
 		//localizar evento no repositorio, usando novadata
 		Evento dataOcupada = repositorio.localizarEvento(novadata);
 		if (dataOcupada != null)
-			throw new Exception("Não adiou evento: "+novadata+ " Ocupada");
+			throw new Exception("Nï¿½o adiou evento: "+novadata+ " Ocupada");
 		//alterar a data do evento
 		ev.setData(novadata);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 	}
 	
@@ -208,16 +208,16 @@ public class Fachada {
 		//localizar participante no repositorio, usando o nome 
 		Participante p = repositorio.localizarParticipante(nome);
 		if (p == null){
-			throw new Exception("Não apagou participante: "+nome+" inexistente");
+			throw new Exception("Nï¿½o apagou participante: "+nome+" inexistente");
 		}
 		//participante nao pode ser deletado caso participe de algum evento
 		int qEventos = p.getEventos().size();
 		if (qEventos > 0){
-			throw new Exception("Não apagou participante: "+nome+ " ainda participa de eventos");
+			throw new Exception("Nï¿½o apagou participante: "+nome+ " ainda participa de eventos");
 		}
 		//remover o participante do repositorio
 		repositorio.remover(p);
-		//gravar repositório
+		//gravar repositï¿½rio
 		repositorio.salvar();
 	}
 
