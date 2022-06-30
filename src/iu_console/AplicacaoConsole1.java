@@ -30,10 +30,10 @@ public class AplicacaoConsole1 {
 			System.out.println("adiou festa de sao joao "+festa.getData());
 
 			System.out.println("criar participantes da festa");
-			Participante zezinho = 		Fachada.criarParticipante("zezinho@gmail.com", "zezinho",  150);
-			Participante zezao = 		Fachada.criarParticipante("zezao@gmail.com", "zezao",  30);
-			Convidado padre = 		Fachada.criarConvidado("padre@gmail.com", "padre",  70, "igreja");
-			Convidado diretor = 	Fachada.criarConvidado("diretor@gmail.com", "diretor",  50, "ifpb");
+			Participante zezinho = 	Fachada.criarParticipante("zezinho@gmail.com", "zezinho",  150);
+			Participante zezao = Fachada.criarParticipante("zezao@gmail.com", "zezao",  30);
+			Convidado padre = Fachada.criarConvidado("padre@gmail.com", "padre",  70, "igreja");
+			Convidado diretor = Fachada.criarConvidado("diretor@gmail.com", "diretor",  50, "ifpb");
 
 			System.out.println("adicionar participantes da festa");
 			Fachada.adicionarParticipanteEvento("zezinho", 4);
@@ -56,7 +56,7 @@ public class AplicacaoConsole1 {
 			Fachada.adicionarParticipanteEvento("zezao", 5);
 
 			Fachada.adiarEvento("01/07/2022", "02/07/2022");
-			System.out.println("adiou show "+festa.getData());
+			System.out.println("adiou show "+show.getData());
 
 			Fachada.apagarEvento("02/07/2022");
 			System.out.println("apagou show");

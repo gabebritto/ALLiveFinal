@@ -14,73 +14,73 @@ public class AplicacaoConsole2 {
 		Evento ev;
 		
 		
-		System.out.println("\n-------TESTE DE EXCEÇÕES LANÇADAS PELOS METODOS DA FACHADA--------");
+		System.out.println("\n-------TESTE DE EXCEÃ‡Ã•ES LANï¿½ADAS PELOS METODOS DA FACHADA--------");
 		try {
 			p = Fachada.criarParticipante("p1@gmail.com","p1", 10);
 			p = Fachada.criarParticipante("p1@gmail.com","p1", 10);
-			System.out.println("*************1--->Nao lançou exceção para: criar participante existente "); 
+			System.out.println("*************1--->Nao lanÃ§ou exceÃ§Ã£o para: criar participante existente "); 
 		}catch (Exception e) {System.out.println("1ok--->"+e.getMessage());}
 
 		try {
 			c = Fachada.criarConvidado("c1@gmail.com","c1", 30, "empresa");
 			c = Fachada.criarConvidado("c1@gmail.com","c1", 30, "empresa");
-			System.out.println("*************2--->Nao lançou exceção para: criar convidado existente "); 
+			System.out.println("*************2--->Nao lanÃ§ou exceÃ§Ã£o para: criar convidado existente "); 
 		}catch (Exception e) {System.out.println("2ok--->"+e.getMessage());}
 
 		try {
 			ev = Fachada.criarEvento("01/01/2030","e1", 100);
 			ev = Fachada.criarEvento("01/01/2030","e1", 100);
-			System.out.println("*************3--->Nao lançou exceção para: criar evento existente "); 
+			System.out.println("*************3--->Nao lanÃ§ou exceÃ§Ã£o para: criar evento existente "); 
 		}catch (Exception e) {System.out.println("3ok--->"+e.getMessage());}
 
 		try {
 			ev = Fachada.criarEvento("02/01/2030","e2", -10.0);
-			System.out.println("*************4--->Nao lançou exceção para: criar evento preco negativo "); 
+			System.out.println("*************4--->Nao lanÃ§ou exceÃ§Ã£o para: criar evento preco negativo "); 
 		}catch (Exception e) {System.out.println("4ok--->"+e.getMessage());}
 
 		try {
 			ev = Fachada.criarEvento("03/01/2030","e3", 0.0);
 			Fachada.adiarEvento("03/01/2030","01/01/2030");
-			System.out.println("*************5--->Nao lançou exceção para: adiar evento data existente"); 
+			System.out.println("*************5--->Nao lanÃ§ou exceÃ§Ã£o para: adiar evento data existente"); 
 		}catch (Exception e) {System.out.println("5ok--->"+e.getMessage());}
 
 		try 
 		{
 			Fachada.adicionarParticipanteEvento("p1", 1);	
 			Fachada.adicionarParticipanteEvento("p1", 1);	
-			System.out.println("*************6--->Nao lançou exceção: adicionar participante evento que participa"); 
+			System.out.println("*************6--->Nao lanÃ§ou exceÃ§Ã£o: adicionar participante evento que participa"); 
 		}catch (Exception e) {System.out.println("6ok--->"+e.getMessage());}
 
 		try 
 		{
 			Fachada.removerParticipanteEvento("p1", 1);	
 			Fachada.removerParticipanteEvento("p1", 1);	
-			System.out.println("*************7--->Nao lançou exceção: remover participante evento que nao participa"); 
+			System.out.println("*************7--->Nao lanÃ§ou exceÃ§Ã£o: remover participante evento que nao participa"); 
 		}catch (Exception e) {System.out.println("7ok--->"+e.getMessage());}
 
 		try 
 		{
 			Fachada.adicionarParticipanteEvento("p2", 1);	
-			System.out.println("*************8--->Nao lançou exceção: adicionar participante inexistente"); 
+			System.out.println("*************8--->Nao lanÃ§ou exceÃ§Ã£oo: adicionar participante inexistente"); 
 		}catch (Exception e) {System.out.println("8ok--->"+e.getMessage());}
 
 		try 
 		{
 			Fachada.removerParticipanteEvento("p2", 1);	
-			System.out.println("*************9--->Nao lançou exceção: remover participante inexistente "); 
+			System.out.println("*************9--->Nao lanï¿½ou exceï¿½ï¿½o: remover participante inexistente "); 
 		}catch (Exception e) {System.out.println("9ok--->"+e.getMessage());}
 
 		try 
 		{
 			Fachada.apagarEvento("03/01/2030");	
 			Fachada.apagarEvento("03/01/2030");	
-			System.out.println("*************10--->Nao lançou exceção: apagar evento inexistente"); 
+			System.out.println("*************10--->Nao lanï¿½ou exceï¿½ï¿½o: apagar evento inexistente"); 
 		}catch (Exception e) {System.out.println("10ok--->"+e.getMessage());}
 
 		try 
 		{
 			Fachada.apagarParticipante("p2");	
-			System.out.println("*************11--->Nao lançou exceção: apagar participante inexistente"); 
+			System.out.println("*************11--->Nao lanï¿½ou exceï¿½ï¿½o: apagar participante inexistente"); 
 		}catch (Exception e) {System.out.println("11ok--->"+e.getMessage());}
 	
 	

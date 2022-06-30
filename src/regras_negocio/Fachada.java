@@ -153,12 +153,12 @@ public class Fachada {
 		//localizar evento no repositorio, usando id 
 		Evento ev = repositorio.localizarEvento(id);
 		if (ev == null){
-			throw new Exception("N�o removeu participante: "+id+"inexistente");
+			throw new Exception("N�o removeu participante: "+ id +"inexistente");
 		}
 		//localizar o participante no evento, usando o nome
 		Participante localizar = ev.localizar(p.getNome());
-		if (localizar != null){
-			throw new Exception("N�o removeu participante: "+nome+"N�o participa do evento.");
+		if (localizar == null){
+			throw new Exception("N�o removeu participante: "+ nome +" Não participa do evento.");
 		}
 		//remover o participante do evento
 		ev.remover(p);
